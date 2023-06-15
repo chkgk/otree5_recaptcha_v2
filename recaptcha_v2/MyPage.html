@@ -1,0 +1,19 @@
+{{ block title }}
+    Welcome
+{{ endblock }}
+{{ block content }}
+
+    <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_SITE_KEY }}" data-callback="verify_token"></div>
+    {{ formfields }}
+    {{ next_button }}
+    
+{{ endblock }}
+
+{{ block scripts }}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+         function verify_token(response_token) {
+             liveSend({'response_token': response_token});
+         }
+    </script>
+{{ endblock }}
